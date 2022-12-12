@@ -19,7 +19,7 @@ jobs:
         run: |
           ls -lah
           chmod -x ./generate.sh
-          ./generate
+          ./generate.sh
       - uses: actions/upload-artifact@v3
         with:
           name: cef-${{ matrix.arch }}
