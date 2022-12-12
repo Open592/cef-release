@@ -18,7 +18,6 @@ jobs:
       - name: Generate a release bundle of CEF for Open592
         run: |
           ls -lah
-          chmod -x ./generate.sh
           ./generate.sh
       - uses: actions/upload-artifact@v3
         with:
