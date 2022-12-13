@@ -1,4 +1,4 @@
-name: Generate CEF releases on x86_64
+name: Generate CEF bundle releases on x86_64
 
 on: workflow_call
 
@@ -14,6 +14,6 @@ jobs:
           ./generate.sh x86_64
       - uses: actions/upload-artifact@v3
         with:
-          name: cef-${{ matrix.arch }}
+          name: cef-x86-64
           path: ${{ github.workspace }}/working-dir/outputs/*.tar.bz2
           if-no-files-found: error

@@ -1,4 +1,4 @@
-name: Generate CEF bundles on all supported platforms
+name: Generate CEF bundle releases on all supported platforms
 
 on: workflow_call
 

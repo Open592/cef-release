@@ -1,4 +1,4 @@
-name: Generate CEF releases on ARM
+name: Generate CEF bundle releases on ARM
 
 on: workflow_call
 

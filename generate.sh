@@ -33,7 +33,6 @@ fatal() {
 }
 
 ARCH=$1
-CEF_ARCH="notfound"
 
 log "Executing generate.sh for ${ARCH} on $(uname -m)"
 

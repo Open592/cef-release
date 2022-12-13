@@ -1,7 +1,9 @@
-name: Generate CEF releases
+name: Generate CEF bundle releases
 
-# TODO: Update to only run on new tags
-on: [push]
+on:
+  push:
+    tags:
+      - '*'
 
 jobs:
   checkout:
@@ -21,7 +23,9 @@ jobs:
         with:
           path: ${{ github.workspace }}/artifacts/
       - name: Create release
-        id: create-release
-        run: |
-          cd ${{ github.workspace }}/artifacts/
-          ls -lah
+        uses: ncipollo/release-action@v1
+        with:
+          artifacts: ${{ github.workspace }}/artifacts/cef-*
+          artifactErrorsFailBuild: true
+          body: ${{ github.ref_name }}
+          tag: ${{ github.ref_name }}
