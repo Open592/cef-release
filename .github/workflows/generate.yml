@@ -10,15 +10,15 @@ jobs:
       matrix:
         arch:
           - x86_64
-          - arm
-          - arm64
+          - armv7l
+          - aarch64
     steps:
       - uses: actions/checkout@v3
       - uses: lukka/get-cmake@latest
       - name: Generate a release bundle of CEF for Open592
         run: |
           ls -lah
-          ./generate.sh
+          ./generate.sh ${{ matrix.arch }}
       - uses: actions/upload-artifact@v3
         with:
           name: cef-${{ matrix.arch }}
