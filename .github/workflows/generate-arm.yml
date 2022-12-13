@@ -1,0 +1,27 @@
+name: Generate CEF releases on ARM
+
+on: workflow_call
+
+jobs:
+  generate:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        arch:
+          - armv7
+          - aarch64
+    steps:
+      - uses: actions/checkout@v3
+      - uses: uraimo/run-on-arch-action@v2
+        with:
+          arch: ${{ matrix.arch }}
+          distro: ubuntu_latest
+          githubToken: ${{ github.token }}
+          run: |
+            ls -lah
+            ./generate.sh ${{ matrix.arch }}
+      - uses: actions/upload-artifact@v3
+        with:
+          name: cef-${{ matrix.arch }}
+          path: ${{ github.workspace }}/working-dir/outputs/*.tar.bz2
+          if-no-files-found: error

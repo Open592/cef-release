@@ -4,23 +4,24 @@ name: Generate CEF releases
 on: [push]
 
 jobs:
-  generate:
+  checkout:
     runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        arch:
-          - x86_64
-          - armv7l
-          - aarch64
     steps:
-      - uses: actions/checkout@v3
-      - uses: lukka/get-cmake@latest
-      - name: Generate a release bundle of CEF for Open592
-        run: |
-          ls -lah
-          ./generate.sh ${{ matrix.arch }}
-      - uses: actions/upload-artifact@v3
+      - name: Checkout repo
+        uses: actions/checkout@v3
+  build:
+    needs: [checkout]
+    uses: ./.github/workflows/generate-all.yml
+  release:
+    needs: [build, checkout]
+    runs-on: ubuntu-latest
+    steps:
+      - name: Download artifacts
+        uses: actions/download-artifact@v3
         with:
-          name: cef-${{ matrix.arch }}
-          path: ${{ github.workspace }}/working-dir/outputs/*.tar.bz2
-          if-no-files-found: error
+          path: ${{ github.workspace }}/artifacts/
+      - name: Create release
+        id: create-release
+        run: |
+          cd ${{ github.workspace }}/artifacts/
+          ls -lah

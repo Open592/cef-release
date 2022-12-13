@@ -1,0 +1,9 @@
+name: Generate CEF bundles on all supported platforms
+
+on: workflow_call
+
+jobs:
+  generate-x86-64:
+    uses: ./.github/workflows/generate-x86-64.yml
+  generate-arm:
+    uses: ./.github/workflows/generate-arm.yml

@@ -39,7 +39,7 @@ log "Executing generate.sh for ${ARCH} on $(uname -m)"
 
 if [ "${ARCH}" == "x86_64" ]; then
     CEF_NAME="cef_binary_107.1.12+g65b79a6+chromium-107.0.5304.122_linux64"
-elif [ "${ARCH}" == "armv7l" ]; then
+elif [ "${ARCH}" == "armv7" ]; then
     CEF_NAME="cef_binary_107.1.12+g65b79a6+chromium-107.0.5304.122_arm"
 elif [ "${ARCH}" == "aarch64" ]; then
     CEF_NAME="cef_binary_107.1.12+g65b79a6+chromium-107.0.5304.122_arm64"
