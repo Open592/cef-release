@@ -4,6 +4,7 @@ on: workflow_call
 
 jobs:
   generate-x86-64:
+    runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
       - uses: lukka/get-cmake@latest
