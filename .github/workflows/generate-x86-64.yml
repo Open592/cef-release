@@ -11,7 +11,7 @@ jobs:
       - name: Generate a release bundle of CEF for Open592
         run: |
           ls -lah
-          ./generate.sh ${{ matrix.arch }}
+          ./generate.sh x86_64
       - uses: actions/upload-artifact@v3
         with:
           name: cef-${{ matrix.arch }}
