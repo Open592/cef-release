@@ -73,7 +73,7 @@ mkdir build && cd build
 
 cmake ../
 
-make libcef_dll_wrapper
+make xCPUARCH=$(uname -m)
 
 # Move into working-dir
 cd ../
