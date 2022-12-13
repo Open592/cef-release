@@ -71,7 +71,7 @@ tar -xvjf cef.tar.bz2 --strip-components=1 -C ./
 
 mkdir build && cd build
 
-cmake ../
+cmake -DCMAKE_SYSTEM_PROCESSOR=$(uname -m) -DPROJECT_ARCH=$(uname -m) -DCMAKE_BUILD_TYPE=Release ../
 
 make xCPUARCH=$(uname -m)
 
