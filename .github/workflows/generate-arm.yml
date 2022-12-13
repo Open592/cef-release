@@ -17,6 +17,10 @@ jobs:
           arch: ${{ matrix.arch }}
           distro: ubuntu_latest
           githubToken: ${{ github.token }}
+          install: |
+            apt upgrade
+            apt update
+            apt install -y -q build-essential cmake curl
           run: |
             ls -lah
             ./generate.sh ${{ matrix.arch }}
