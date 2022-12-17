@@ -18,9 +18,9 @@ jobs:
           distro: ubuntu_latest
           githubToken: ${{ github.token }}
           install: |
-            apt upgrade
-            apt update
-            apt install -y -q build-essential cmake curl
+            apt-get upgrade
+            apt-get update
+            apt-get install -y -q build-essential cmake curl llvm
           run: |
             ls -lah
             ./generate.sh ${{ matrix.arch }}

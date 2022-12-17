@@ -84,7 +84,7 @@ cp -a ./Release/*.so ./artifacts
 cp -a ./include ./artifacts
 
 # Strip symbols
-strip -w ./artifacts/*.so ./artifacts/*.a
+llvm-strip -w ./artifacts/*.so ./artifacts/*.a
 
 # Package up artifacts
 mkdir ./outputs
